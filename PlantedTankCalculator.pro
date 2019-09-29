@@ -43,14 +43,13 @@ FORMS += \
 
 
 DISTFILES += \
-    ptc.cfg \
-    ptc_zn_CN.ts
+    ptc.cfg
 
 RESOURCES += \
     ptc.qrc
 
 TRANSLATIONS += \
-    ptc_zn_CN.ts
+    ptc_zh_CN.ts
 
 win32: INCLUDEPATH += $$PWD/libconfig/include
 win32: LIBS += $$PWD/libconfig/lib32/libconfig.a

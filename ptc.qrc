@@ -3,6 +3,6 @@
         <file>images/co2.jpg</file>
     </qresource>
     <qresource prefix="/translations">
-        <file>ptc_zn_CN.qm</file>
+        <file>ptc_zh_CN.qm</file>
     </qresource>
 </RCC>
