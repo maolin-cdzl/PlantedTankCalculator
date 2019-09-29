@@ -1,5 +1,6 @@
 #include <qdebug.h>
 #include <unordered_map>
+#include <cmath>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -12,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     init_drydosing();
     init_volume();
+    init_drip_wc();
 }
 
 MainWindow::~MainWindow()
@@ -61,6 +63,19 @@ void MainWindow::init_drydosing()
     ui->drydosing_fertilizer_weight->setHorizontalHeaderLabels(header);
     ui->drydosing_total_fertilizer_weight->setHorizontalHeaderLabels(header);
 
+}
+
+void MainWindow::init_drip_wc()
+{
+    ui->drip_wc_volume_1->setValidator(new QIntValidator(0,100000,this));
+    ui->drip_wc_percent->setValidator(new QIntValidator(0,100,this));
+    ui->drip_wc_days1->setValidator(new QIntValidator(0,100,this));
+    ui->drip_wc_volume2->setValidator(new QIntValidator(0,100000,this));
+    ui->drip_wc_each_day_volume->setValidator(new QIntValidator(0,100000,this));
+
+    QStringList header;
+    header << tr("Changed percent");
+    ui->drip_wc_percentages->setHorizontalHeaderLabels(header);
 }
 
 void MainWindow::clear_drydosing() {
@@ -282,5 +297,65 @@ void MainWindow::on_volume_calculate_clicked()
         ui->volume_water_volume->setText(QString::number(water_vol));
         ui->volume_substrate->setText(QString::number(sub_vol));
         ui->volume_surface->setText(QString::number(suf_area));
+    }
+}
+
+
+
+static double bad_NRoot(double x,uint32_t N) {
+    //利用二分法求解
+    if( x <= 0.0 || x >= 1.0 ) return x;
+    if(N==1) return x;
+    double lower=0;
+    double higher=1.0;
+    double value=0.5;
+	double j;
+
+    for(;;) {
+		j = std::pow(value,N) - x;
+        qDebug() << "x=" << x << ",N=" << N << ",value=" << value << ",lower=" << lower << ",higher=" << higher << ",j=" << j;
+		if( std::abs(j) < 0.0001 ) break;
+        if( j > 0 ) {
+			higher = value;
+		} else {
+			lower = value;
+		}
+		value = ( higher + lower ) / 2.0;
+    }
+    return value;
+}
+
+void MainWindow::on_drip_wc_solution_clicked()
+{
+    int volume = ui->drip_wc_volume_1->text().toInt();
+    int percent = ui->drip_wc_percent->text().toInt();
+    int days = ui->drip_wc_days1->text().toInt();
+
+    if( volume < 1 || percent < 1 || percent >= 100 || days < 1 ) return;
+
+    double target = (100 - percent) / 100.0;
+
+    qDebug() << "target: " << target << ", days:" << days;
+	double each_day_percent = bad_NRoot(target,days);
+	qDebug() << "each_day_percent: " << each_day_percent;
+	if( each_day_percent <= 0.0 || each_day_percent >= 1.0 ) return;
+
+    ui->drip_wc_each_volume->setText(QString::number(volume * (1.0 - each_day_percent)));
+    ui->drip_wc_days2->setText(ui->drip_wc_days1->text());
+    ui->drip_wc_target_percent->setText(QString::number( (1.0 - std::pow(each_day_percent,days)) * 100) + "%");
+}
+
+void MainWindow::on_drip_wc_display_percentages_clicked()
+{
+    int volume = ui->drip_wc_volume2->text().toInt();
+    int each_volume = ui->drip_wc_each_day_volume->text().toInt();
+    if( volume < 1 || each_volume >= volume ) return;
+
+    double p = (volume - each_volume) * 1.0 / volume;
+    double w = 1.0;
+    ui->drip_wc_percentages->setRowCount(100);
+    for(int i=0; i < 100; ++i) {
+        w = w * p;
+        ui->drip_wc_percentages->setItem(i,0,new QTableWidgetItem(QString::number(100.0 - (w * 100.0)) + "%"));
     }
 }

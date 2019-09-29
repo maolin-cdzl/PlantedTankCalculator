@@ -103,67 +103,163 @@
     <message>
         <location filename="mainwindow.ui" line="361"/>
         <source>CM</source>
-        <translation type="finished">厘米</translation>
+        <translation>厘米</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="368"/>
         <source>Length</source>
-        <translation type="finished">长</translation>
+        <translation>长</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="378"/>
         <source>Width</source>
-        <translation type="finished">宽</translation>
+        <translation>宽</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="388"/>
         <source>High</source>
-        <translation type="finished">高</translation>
+        <translation>高</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="398"/>
         <source>Substrate thickness</source>
-        <translation type="finished">底砂厚度</translation>
+        <translation>底砂厚度</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="408"/>
         <source>Surface to top</source>
-        <translation type="finished">水面离顶部</translation>
+        <translation>水面离顶部</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="437"/>
         <source>Water volume(L)</source>
-        <translation type="finished">水体(L)</translation>
+        <translation>水体(L)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="454"/>
         <source>Substrate(L)</source>
-        <translation type="finished">底砂(L)</translation>
+        <translation>底砂(L)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="471"/>
         <source>Surface area(cm2)</source>
-        <translation type="finished">表面积(cm2)</translation>
+        <translation>表面积(cm2)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="56"/>
+        <location filename="mainwindow.ui" line="490"/>
+        <source>Drip Water Change</source>
+        <translation type="finished">换水</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="502"/>
+        <source>How much should I change every day?</source>
+        <translation type="finished">我应该每天换多少水?</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="548"/>
+        <source>My tank is</source>
+        <translation type="finished">我的缸水量是</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="555"/>
+        <location filename="mainwindow.ui" line="640"/>
+        <source>Liters</source>
+        <translation type="finished">升</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="562"/>
+        <source>I want to change</source>
+        <translation type="finished">我想要换掉</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="569"/>
+        <source>50</source>
+        <translation type="finished">50</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="576"/>
+        <source>percent</source>
+        <translation type="finished">比例</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="583"/>
+        <source>every</source>
+        <translation type="finished">每</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="590"/>
+        <source>7</source>
+        <translation type="finished">7</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="597"/>
+        <source>100</source>
+        <translation type="finished">100</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="604"/>
+        <source>days</source>
+        <translation type="finished">天</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="623"/>
+        <source>Every day change</source>
+        <translation type="finished">每天换掉</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="647"/>
+        <source>On day</source>
+        <translation type="finished">在第</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="664"/>
+        <source>you will have changed</source>
+        <translation type="finished">天你将会总共换掉</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="681"/>
+        <source>of the aquarium volume</source>
+        <translation type="finished">的总水量</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="700"/>
+        <source>Aquarium volume</source>
+        <translation type="finished">总水量</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="710"/>
+        <source>Display percentages</source>
+        <translation type="finished">显示比例累计</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="717"/>
+        <source>Water changed per day</source>
+        <translation type="finished">每天换水</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="58"/>
         <source>Element</source>
         <translation>元素</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="56"/>
+        <location filename="mainwindow.cpp" line="58"/>
         <source>PPM</source>
         <translation>PPM</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="60"/>
+        <location filename="mainwindow.cpp" line="62"/>
         <source>Fertilizer</source>
         <translation>肥料</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="60"/>
+        <location filename="mainwindow.cpp" line="62"/>
         <source>Gram</source>
         <translation>克</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="77"/>
+        <source>Changed percent</source>
+        <translation type="finished">换水比例</translation>
     </message>
 </context>
 </TS>

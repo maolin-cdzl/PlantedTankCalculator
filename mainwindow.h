@@ -39,11 +39,16 @@ private slots:
 
     void on_volume_calculate_clicked();
 
+    void on_drip_wc_solution_clicked();
+
+    void on_drip_wc_display_percentages_clicked();
+
 private:
     const compound_t* get_compound(const std::string& formula) const;
     const dosing_method_t* get_method(const std::string& method) const;
     void init_drydosing();
     void init_volume();
+    void init_drip_wc();
     void clear_drydosing();
     void update_concertration();
 private:
