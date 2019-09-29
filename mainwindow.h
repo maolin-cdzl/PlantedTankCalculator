@@ -43,14 +43,20 @@ private slots:
 
     void on_drip_wc_display_percentages_clicked();
 
+    void on_cfg_reset_clicked();
+
+    void on_cfg_save_clicked();
+
 private:
     const compound_t* get_compound(const std::string& formula) const;
     const dosing_method_t* get_method(const std::string& method) const;
     void init_drydosing();
     void init_volume();
     void init_drip_wc();
+    void init_configure();
     void clear_drydosing();
     void update_concertration();
+    void reset_cfg_edit();
 private:
     Ui::MainWindow *ui;
     std::vector<compound_t>         m_compounds;

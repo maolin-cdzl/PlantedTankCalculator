@@ -3,6 +3,7 @@
 #include <cmath>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     init_drydosing();
     init_volume();
     init_drip_wc();
+    init_configure();
 }
 
 MainWindow::~MainWindow()
@@ -76,6 +78,11 @@ void MainWindow::init_drip_wc()
     QStringList header;
     header << tr("Changed percent");
     ui->drip_wc_percentages->setHorizontalHeaderLabels(header);
+}
+
+void MainWindow::init_configure()
+{
+    reset_cfg_edit();
 }
 
 void MainWindow::clear_drydosing() {
@@ -358,4 +365,52 @@ void MainWindow::on_drip_wc_display_percentages_clicked()
         w = w * p;
         ui->drip_wc_percentages->setItem(i,0,new QTableWidgetItem(QString::number(100.0 - (w * 100.0)) + "%"));
     }
+}
+
+void MainWindow::reset_cfg_edit()
+{
+    QFile file("ptc.cfg");
+    if( file.open(QFile::ReadOnly | QFile::Text)) {
+        QString content;
+        while( !file.atEnd() ) {
+            content.append( file.readLine() );
+        }
+        ui->cfg_edit->setPlainText(content);
+        file.close();
+    }
+}
+
+void MainWindow::on_cfg_reset_clicked()
+{
+    reset_cfg_edit();
+}
+
+void MainWindow::on_cfg_save_clicked()
+{
+    QString content = ui->cfg_edit->document()->toPlainText();
+    auto cs = load_compounds_from_string(content);
+    auto ms = load_methods_from_string(content);
+    if( !cs.empty() && !ms.empty() ) {
+        m_compounds = std::move(cs);
+        m_methods = std::move(ms);
+
+        QFile file("ptc.cfg");
+        if( file.open(QFile::WriteOnly | QFile::Text)) {
+            QTextStream writer(&file);
+            writer << content;
+            writer.flush();
+            file.close();
+        }
+        ui->drydosing_fertilizer->clear();
+        for(auto& c : m_compounds) {
+            ui->drydosing_fertilizer->addItem(QString::fromStdString(c.formula));
+        }
+        ui->drydosing_method->clear();
+        for(auto& m : m_methods) {
+            ui->drydosing_method->addItem(QString::fromStdString(m.name));
+        }
+    } else {
+        QMessageBox::information(this, tr("Warning"),tr("bad configure format"));
+    }
+
 }

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab_dry_dosing">
      <attribute name="title">
@@ -224,7 +224,7 @@
             <number>2</number>
            </property>
            <attribute name="horizontalHeaderVisible">
-            <bool>true</bool>
+            <bool>false</bool>
            </attribute>
            <attribute name="verticalHeaderVisible">
             <bool>false</bool>
@@ -532,7 +532,7 @@
       </property>
       <column/>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>21</x>
@@ -607,7 +607,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -684,7 +684,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>471</x>
@@ -722,6 +722,47 @@
         <widget class="QLineEdit" name="drip_wc_each_day_volume"/>
        </item>
       </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Configure</string>
+     </attribute>
+     <widget class="QPlainTextEdit" name="cfg_edit">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>961</width>
+        <height>591</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cfg_save">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>600</y>
+        <width>85</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cfg_reset">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>600</y>
+        <width>85</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reset</string>
+      </property>
      </widget>
     </widget>
    </widget>

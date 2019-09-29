@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <QString>
 
 struct element_part_t {
     std::string     formula;
@@ -59,5 +60,7 @@ struct dosing_method_t {
 std::vector<compound_t> load_compounds(const std::string& filepath);
 std::vector<dosing_method_t> load_methods(const std::string& filepath);
 
+std::vector<compound_t> load_compounds_from_string(const QString& content);
+std::vector<dosing_method_t> load_methods_from_string(const QString& content);
 
 #endif // ELEMENTS_H
