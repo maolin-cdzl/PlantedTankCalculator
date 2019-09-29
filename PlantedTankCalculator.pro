@@ -40,20 +40,18 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-unix: LIBS += -lconfig++
+
 
 DISTFILES += \
     ptc.cfg \
     ptc_zn_CN.ts
 
 RESOURCES += \
-    ptc.qrc \
     ptc.qrc
 
 TRANSLATIONS += \
     ptc_zn_CN.ts
 
-INCLUDEPATH += $$PWD/libconfig/include
-
-win32 : LIBS += $$PWD/libconfig/lib32/libconfig.a
-
+win32: INCLUDEPATH += $$PWD/libconfig/include
+win32: LIBS += $$PWD/libconfig/lib32/libconfig.a
+unix: LIBS += -lconfig++
