@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>images/co2.jpg</file>
+        <file>ptc.cfg</file>
     </qresource>
     <qresource prefix="/translations">
         <file>ptc_zh_CN.qm</file>

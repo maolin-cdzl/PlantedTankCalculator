@@ -148,118 +148,143 @@
     <message>
         <location filename="mainwindow.ui" line="490"/>
         <source>Drip Water Change</source>
-        <translation type="finished">换水</translation>
+        <translation>换水</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="502"/>
         <source>How much should I change every day?</source>
-        <translation type="finished">我应该每天换多少水?</translation>
+        <translation>我应该每天换多少水?</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="548"/>
         <source>My tank is</source>
-        <translation type="finished">我的缸水量是</translation>
+        <translation>我的缸水量是</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="555"/>
         <location filename="mainwindow.ui" line="640"/>
         <source>Liters</source>
-        <translation type="finished">升</translation>
+        <translation>升</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="562"/>
         <source>I want to change</source>
-        <translation type="finished">我想要换掉</translation>
+        <translation>我想要换掉</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="569"/>
         <source>50</source>
-        <translation type="finished">50</translation>
+        <translation>50</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="576"/>
         <source>percent</source>
-        <translation type="finished">比例</translation>
+        <translation>比例</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="583"/>
         <source>every</source>
-        <translation type="finished">每</translation>
+        <translation>每</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="590"/>
         <source>7</source>
-        <translation type="finished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="597"/>
         <source>100</source>
-        <translation type="finished">100</translation>
+        <translation>100</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="604"/>
         <source>days</source>
-        <translation type="finished">天</translation>
+        <translation>天</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="623"/>
         <source>Every day change</source>
-        <translation type="finished">每天换掉</translation>
+        <translation>每天换掉</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="647"/>
         <source>On day</source>
-        <translation type="finished">在第</translation>
+        <translation>在第</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="664"/>
         <source>you will have changed</source>
-        <translation type="finished">天你将会总共换掉</translation>
+        <translation>天你将会总共换掉</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="681"/>
         <source>of the aquarium volume</source>
-        <translation type="finished">的总水量</translation>
+        <translation>的总水量</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="700"/>
         <source>Aquarium volume</source>
-        <translation type="finished">总水量</translation>
+        <translation>总水量</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="710"/>
         <source>Display percentages</source>
-        <translation type="finished">显示比例累计</translation>
+        <translation>显示比例累计</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="717"/>
         <source>Water changed per day</source>
-        <translation type="finished">每天换水</translation>
+        <translation>每天换水</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="58"/>
+        <location filename="mainwindow.ui" line="729"/>
+        <source>Configure</source>
+        <translation type="finished">配置</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="751"/>
+        <source>Save</source>
+        <translation type="finished">保存</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="764"/>
+        <source>Reset</source>
+        <translation type="finished">重置</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="60"/>
         <source>Element</source>
         <translation>元素</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="58"/>
+        <location filename="mainwindow.cpp" line="60"/>
         <source>PPM</source>
         <translation>PPM</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="62"/>
+        <location filename="mainwindow.cpp" line="64"/>
         <source>Fertilizer</source>
         <translation>肥料</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="62"/>
+        <location filename="mainwindow.cpp" line="64"/>
         <source>Gram</source>
         <translation>克</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="77"/>
+        <location filename="mainwindow.cpp" line="79"/>
         <source>Changed percent</source>
-        <translation type="finished">换水比例</translation>
+        <translation>换水比例</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="413"/>
+        <source>Warning</source>
+        <translation type="finished">警告</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="413"/>
+        <source>bad configure format</source>
+        <translation type="finished">错误的配置格式</translation>
     </message>
 </context>
 </TS>

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_dry_dosing">
      <attribute name="title">
@@ -34,149 +34,197 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>9</y>
+        <y>20</y>
         <width>931</width>
         <height>611</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0" colspan="3">
-          <widget class="QGroupBox" name="groupBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>80</height>
+              </size>
+             </property>
+             <property name="title">
+              <string/>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+             <widget class="QRadioButton" name="drydosing_is_drydosing">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>40</y>
+                <width>109</width>
+                <height>24</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Dry Dosing</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="drydosing_is_solution">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>40</y>
+                <width>109</width>
+                <height>24</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Solution</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Container size(ml)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="drydosing_container">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Each dosing</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="drydosing_each_dosing">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_35">
+             <property name="text">
+              <string>Solution name</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="drydosing_solution_list">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="editable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QPushButton" name="drydosing_solution_save">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Save</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
            </property>
-           <property name="minimumSize">
+           <property name="sizeHint" stdset="0">
             <size>
-             <width>0</width>
-             <height>80</height>
+             <width>20</width>
+             <height>40</height>
             </size>
            </property>
-           <property name="title">
-            <string/>
-           </property>
-           <property name="flat">
-            <bool>false</bool>
-           </property>
-           <widget class="QRadioButton" name="drydosing_is_drydosing">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>40</y>
-              <width>109</width>
-              <height>24</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Dry Dosing</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QRadioButton" name="drydosing_is_solution">
-            <property name="geometry">
-             <rect>
-              <x>160</x>
-              <y>40</y>
-              <width>109</width>
-              <height>24</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Solution</string>
-            </property>
-           </widget>
-          </widget>
+          </spacer>
          </item>
-         <item row="1" column="0" colspan="2">
-          <widget class="QLabel" name="label_10">
-           <property name="text">
-            <string>Container size(ml)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLineEdit" name="drydosing_container">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>Each dosing</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLineEdit" name="drydosing_each_dosing">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Aquarium size(L)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1" colspan="2">
-          <widget class="QLineEdit" name="drydosing_aquarium_size"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Dry fertilizer</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QComboBox" name="drydosing_fertilizer"/>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Dosing method</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="QComboBox" name="drydosing_method"/>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Calculating for</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="2">
-          <widget class="QComboBox" name="drydosing_element"/>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Concentration(ppm)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="2">
-          <widget class="QLineEdit" name="drydosing_concentration"/>
-         </item>
-         <item row="8" column="0">
-          <widget class="QPushButton" name="drydosing_calculate">
-           <property name="text">
-            <string>Calculate</string>
-           </property>
-          </widget>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Aquarium size(L)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="drydosing_aquarium_size"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Dry fertilizer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="drydosing_fertilizer"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Dosing method</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="drydosing_method"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Calculating for</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="drydosing_element"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Concentration(ppm)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="drydosing_concentration"/>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QPushButton" name="drydosing_calculate">
+             <property name="text">
+              <string>Calculate</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -224,7 +272,7 @@
             <number>2</number>
            </property>
            <attribute name="horizontalHeaderVisible">
-            <bool>false</bool>
+            <bool>true</bool>
            </attribute>
            <attribute name="verticalHeaderVisible">
             <bool>false</bool>

@@ -47,6 +47,10 @@ private slots:
 
     void on_cfg_save_clicked();
 
+    void on_drydosing_solution_list_currentIndexChanged(int index);
+
+    void on_drydosing_solution_save_clicked();
+
 private:
     const compound_t* get_compound(const std::string& formula) const;
     const dosing_method_t* get_method(const std::string& method) const;
