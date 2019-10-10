@@ -5,6 +5,8 @@
 #include "elements.h"
 #include <QFile>
 #include <QDir>
+#include <QStandardPaths>
+#include <QDebug>
 
 float roundf3(float x) {
     return std::round(x * 1000.0) / 1000.0;
@@ -130,14 +132,15 @@ std::vector<dosing_method_t> load_methods(const std::string &filepath) {
     return std::vector<dosing_method_t>();
 }
 
-
-#ifdef WIN32
+//#ifdef WIN32
 
 QString get_home_directory() {
-    QString homedir = getenv("USERPROFILE");
-    return std::move(homedir);
+    QString homedir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    qDebug() << "homedir: " << homedir.toLocal8Bit();
+    return homedir;
 }
 
+/*
 #else
 #include <unistd.h>
 #include <sys/types.h>
@@ -150,6 +153,7 @@ QString get_home_directory() {
     return std::move(homedir);
 }
 #endif
+*/
 
 QString get_ptc_directory() {
     QString ptc;
@@ -157,8 +161,11 @@ QString get_ptc_directory() {
         QDir dir;
         if( ! dir.exists(get_home_directory()) ) break;
         ptc = get_home_directory() + QDir::separator() + ".plantedtankcalculator";
+        qDebug() << "ptc: " << ptc;
         if( ! dir.exists(ptc) ) {
+            qDebug() << "create ptc";
             if( ! dir.mkdir(ptc) ) {
+                qDebug() << "create ptc directory failed";
                 ptc.clear();
                 break;
             }
