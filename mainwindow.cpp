@@ -98,11 +98,11 @@ void MainWindow::init_configure()
 
 void MainWindow::clear_drydosing() {
     ui->drydosing_element_ppm->clearContents();
-    //ui->drydosing_element_ppm->setRowCount(0);
+    ui->drydosing_element_ppm->setRowCount(0);
     ui->drydosing_fertilizer_weight->clearContents();
     ui->drydosing_fertilizer_weight->setRowCount(0);
     ui->drydosing_total_element_ppm->clearContents();
-    //ui->drydosing_total_element_ppm->setRowCount(0);
+    ui->drydosing_total_element_ppm->setRowCount(0);
     ui->drydosing_total_fertilizer_weight->clearContents();
     ui->drydosing_total_fertilizer_weight->setRowCount(0);
 }
@@ -519,11 +519,20 @@ void MainWindow::on_drydosing_solution_save_clicked()
 
 
         auto solutions = get_solution_list();
+
         ui->drydosing_solution_list->clear();
         for(auto& s : solutions) {
             ui->drydosing_solution_list->addItem(s);
         }
         ui->drydosing_solution_list->addItem(tr("Add New"),QVariant(true));
-        ui->drydosing_solution_list->setCurrentText(name);
+
+        for(int row = 0; row < ui->drydosing_solution_list->count(); ++row) {
+            if( ui->drydosing_solution_list->itemText(row).compare(name) == 0 ) {
+                ui->drydosing_solution_list->setCurrentIndex(row);
+                break;
+            }
+        }
+        //ui->drydosing_solution_list->setCurrentText(name);
+
     } while(0);
 }
