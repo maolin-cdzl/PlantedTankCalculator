@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_compounds = load_compounds(ptcfile.toStdString());
     m_methods = load_methods(ptcfile.toStdString());
     ui->setupUi(this);
+    this->setFixedSize(1024,768);
+
     init_drydosing();
     init_volume();
     init_drip_wc();
@@ -47,7 +49,7 @@ const dosing_method_t* MainWindow::get_method(const std::string& method) const {
 void MainWindow::init_drydosing()
 {
     ui->drydosing_aquarium_size->setValidator(new QIntValidator(0,100000,this));
-    ui->drydosing_aquarium_size->setText("10");
+    ui->drydosing_aquarium_size->setText("100");
     ui->drydosing_concentration->setValidator(new QDoubleValidator(0,1000,5,this));
     ui->drydosing_container->setValidator(new QIntValidator(0,100000,this));
     ui->drydosing_each_dosing->setValidator(new QIntValidator(0,100000,this));
@@ -134,7 +136,7 @@ void MainWindow::on_drydosing_method_currentIndexChanged(const QString &arg1)
         if( ! en.empty() ) {
             for(auto& e : m->elements) {
                 if( e.formula.compare(en) == 0 ) {
-                    ui->drydosing_concentration->setText(QString::number(e.ppm));
+                    ui->drydosing_concentration->setText(QString::number(roundf3(e.ppm)));
                     return;
                 }
             }
@@ -156,7 +158,7 @@ void MainWindow::on_drydosing_element_currentIndexChanged(const QString &arg1)
     if( m && !en.empty() ) {
         for(auto& e : m->elements) {
             if( e.formula.compare(en) == 0 ) {
-                ui->drydosing_concentration->setText(QString::number(e.ppm));
+                ui->drydosing_concentration->setText(QString::number(roundf3(e.ppm)));
                 return;
             }
         }
@@ -314,8 +316,8 @@ void MainWindow::on_volume_calculate_clicked()
         float sub_vol = length * width * sub / 1000.0;
         int suf_area = length * width;
 
-        ui->volume_water_volume->setText(QString::number(water_vol));
-        ui->volume_substrate->setText(QString::number(sub_vol));
+        ui->volume_water_volume->setText(QString::number(roundf3(water_vol)));
+        ui->volume_substrate->setText(QString::number(roundf3(sub_vol)));
         ui->volume_surface->setText(QString::number(suf_area));
     }
 }
@@ -360,9 +362,9 @@ void MainWindow::on_drip_wc_solution_clicked()
 	qDebug() << "each_day_percent: " << each_day_percent;
 	if( each_day_percent <= 0.0 || each_day_percent >= 1.0 ) return;
 
-    ui->drip_wc_each_volume->setText(QString::number(volume * (1.0 - each_day_percent)));
+    ui->drip_wc_each_volume->setText(QString::number( roundf3(volume * (1.0 - each_day_percent))));
     ui->drip_wc_days2->setText(ui->drip_wc_days1->text());
-    ui->drip_wc_target_percent->setText(QString::number( (1.0 - std::pow(each_day_percent,days)) * 100) + "%");
+    ui->drip_wc_target_percent->setText(QString::number( roundf3((1.0 - std::pow(each_day_percent,days)) * 100)) + "%");
 }
 
 void MainWindow::on_drip_wc_display_percentages_clicked()
@@ -376,7 +378,7 @@ void MainWindow::on_drip_wc_display_percentages_clicked()
     ui->drip_wc_percentages->setRowCount(100);
     for(int i=0; i < 100; ++i) {
         w = w * p;
-        ui->drip_wc_percentages->setItem(i,0,new QTableWidgetItem(QString::number(100.0 - (w * 100.0)) + "%"));
+        ui->drip_wc_percentages->setItem(i,0,new QTableWidgetItem(QString::number(roundf3(100.0 - (w * 100.0))) + "%"));
     }
 }
 
@@ -456,13 +458,13 @@ void MainWindow::on_drydosing_solution_list_currentIndexChanged(int index)
         ui->drydosing_container->setText(QString::number(solution->container_ml));
         ui->drydosing_each_dosing->setText(QString::number(solution->dosing_ml));
 
-        ui->drydosing_total_fertilizer_weight->setRowCount(solution->fertilizers.size());
+        ui->drydosing_total_fertilizer_weight->setRowCount(roundf3(solution->fertilizers.size()));
         int row = 0;
 
         std::unordered_map<std::string,float> total_element_ppm;
         for(auto f : solution->fertilizers) {
             ui->drydosing_total_fertilizer_weight->setItem(row,0,new QTableWidgetItem(QString::fromStdString(f.formula)));
-            ui->drydosing_total_fertilizer_weight->setItem(row,1,new QTableWidgetItem(QString::number(f.gram)));
+            ui->drydosing_total_fertilizer_weight->setItem(row,1,new QTableWidgetItem(QString::number(roundf3(f.gram))));
             ++row;
             if( solution->tank_l > 0 && solution->container_ml > 0 && solution->dosing_ml > 0 ) {
                 auto c = get_compound(f.formula);
@@ -480,7 +482,7 @@ void MainWindow::on_drydosing_solution_list_currentIndexChanged(int index)
         row = 0;
         for(auto e : total_element_ppm) {
             ui->drydosing_total_element_ppm->setItem(row,0,new QTableWidgetItem(QString::fromStdString(e.first)));
-            ui->drydosing_total_element_ppm->setItem(row,1,new QTableWidgetItem(QString::number(e.second)));
+            ui->drydosing_total_element_ppm->setItem(row,1,new QTableWidgetItem(QString::number(roundf3(e.second))));
             ++row;
         }
     } while(0);
@@ -492,7 +494,8 @@ void MainWindow::on_drydosing_solution_save_clicked()
         solution_t solution;
         QString name = ui->drydosing_solution_list->currentText();
         QVariant var = ui->drydosing_solution_list->currentData();
-        if( var.type() == QVariant::Bool && var.toBool() ) {
+        bool add_new = (var.type() == QVariant::Bool && var.toBool());
+        if( add_new ) {
             bool is_ok = false;
             name = QInputDialog::getText(nullptr,tr("Solution name"),tr("Please input solution name"),QLineEdit::Normal,tr("name of solution file"),&is_ok);
             if( !is_ok ) break;
@@ -513,5 +516,14 @@ void MainWindow::on_drydosing_solution_save_clicked()
         if( !solution.name.empty() && solution.tank_l > 0 && solution.container_ml > 0 && solution.dosing_ml > 0.0 && !solution.fertilizers.empty() ) {
             save_solution(solution);
         }
+
+
+        auto solutions = get_solution_list();
+        ui->drydosing_solution_list->clear();
+        for(auto& s : solutions) {
+            ui->drydosing_solution_list->addItem(s);
+        }
+        ui->drydosing_solution_list->addItem(tr("Add New"),QVariant(true));
+        ui->drydosing_solution_list->setCurrentText(name);
     } while(0);
 }

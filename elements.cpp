@@ -1,9 +1,14 @@
 #include <stdlib.h>
+#include <cmath>
 #include <iostream>
 #include <libconfig.h++>
 #include "elements.h"
 #include <QFile>
 #include <QDir>
+
+float roundf3(float x) {
+    return std::round(x * 1000.0) / 1000.0;
+}
 
 std::vector<compound_t> load_compounds_from_string(const QString& content) {
     libconfig::Config cfg;

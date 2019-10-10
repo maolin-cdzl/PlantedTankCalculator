@@ -86,5 +86,6 @@ QString get_ptc_sub_directory(const QString& sub);
 QString get_ptc_configure();
 bool reset_ptc_configure();
 
+float roundf3(float x);
 
 #endif // ELEMENTS_H
