@@ -9,7 +9,7 @@
 #include <QDebug>
 
 float roundf3(float x) {
-    return std::round(x * 1000.0) / 1000.0;
+    return std::round(x * 100000.0) / 100000.0;
 }
 
 std::vector<compound_t> load_compounds_from_string(const QString& content) {
